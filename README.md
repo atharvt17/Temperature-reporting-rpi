@@ -1,9 +1,6 @@
-Certainly! Here's an updated `README.md` file content based on the provided code:
+# Raspberry Pi Temperature Reporting System
 
-```markdown
-# Raspberry Pi Weather Monitoring System
-
-This is a Raspberry Pi-based weather monitoring system that reads temperature and humidity values from a DHT11 sensor and reports them to Adafruit IO. It also includes an optional feature to send notifications via IFTTT when the temperature exceeds a threshold.
+This is a Raspberry Pi-based temperature reporting system that reads temperature values from a DHT11 sensor and reports them to Adafruit IO. It also includes a feature to send email notifications via IFTTT when the temperature exceeds a threshold.
 
 ## Prerequisites
 
@@ -15,7 +12,7 @@ To run this project, you will need:
 - Adafruit_DHT library
 - Adafruit_IO library
 - Adafruit IO account
-- IFTTT account (optional, for notifications)
+- IFTTT account
 
 ## Hardware Setup
 
@@ -31,22 +28,24 @@ To run this project, you will need:
 
 2. Create an account on Adafruit IO (https://io.adafruit.com/).
 
-3. Create two feeds on Adafruit IO:
-   - Temperature feed: for storing temperature values
-   - Humidity feed: for storing humidity values
+3. Create a feed on Adafruit IO for storing temperature values.
 
-4. Set up an IFTTT account (optional, for notifications):
-   - Create an applet with Webhooks as the trigger and the desired action (email, SMS, etc.).
+4. Set up an IFTTT account and install the IFTTT app on your mobile device.
 
 ## Configuration
 
-1. Open the `weather_reporting.py` file.
+1. Open the `temperature_reporting.py` file.
 
 2. Set the following variables:
    - `ADAFRUIT_IO_USERNAME`: Your Adafruit IO username.
    - `ADAFRUIT_IO_KEY`: Your Adafruit IO API key.
    - `dht_pin`: GPIO pin number connected to the DHT11 sensor.
    - `threshold`: Temperature threshold value for triggering notifications (if desired).
+
+3. Configure the IFTTT applet:
+   - Create an applet with Webhooks as the trigger and the email service as the action.
+   - Set the trigger event name to something like `temperature_exceeded`.
+   - Set the action to send an email to the desired email address with a suitable message indicating the temperature exceeded the threshold.
 
 ## Running the Project
 
@@ -59,15 +58,15 @@ To run this project, you will need:
 4. Run the Python script:
 
    ```bash
-   python weather_reporting.py
+   python temperature_reporting.py
    ```
 
-   The script will start reading temperature and humidity values from the DHT11 sensor and sending them to Adafruit IO. If the temperature exceeds the threshold, it will print a message and trigger the configured IFTTT action.
+   The script will start reading temperature values from the DHT11 sensor and sending them to Adafruit IO. If the temperature exceeds the threshold, it will print a message, trigger the configured IFTTT applet, and send an email notification to the provided email address.
 
 ## Customization
 
-- You can modify the threshold value (`threshold`) in the `weather_reporting.py` file according to your needs.
-- If you want to customize the notification or action triggered when the temperature exceeds the threshold, you can integrate with IFTTT by adding the necessary code.
+- You can modify the threshold value (`threshold`) in the `temperature_reporting.py` file according to your needs.
+- You can customize the IFTTT applet to trigger different actions, such as sending notifications to other services or devices.
 
 ## Contributing
 
@@ -78,4 +77,4 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 This project is licensed under the [MIT License](LICENSE).
 ```
 
-Remember to replace `'your_username'` and `'your_api_key'` with your actual Adafruit IO username and API key. Additionally, make sure to include the information related to IFTTT customization and any other customizations you might have made.
+Make sure to provide the necessary details and instructions for setting up and configuring the IFTTT applet to send email notifications.
