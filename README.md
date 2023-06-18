@@ -62,7 +62,7 @@ To run this project, you will need:
    ```
 
    The script will start reading temperature values from the DHT11 sensor and sending them to Adafruit IO. If the temperature exceeds the threshold, it will print a message, trigger the configured IFTTT applet, and send an email notification to the provided email address.
-
+ 
 ## Customization
 
 - You can modify the threshold value (`threshold`) in the `temperature_reporting.py` file according to your needs.
